@@ -3,117 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivo de Tinta | Ofertas y Citas</title>
+    <title>INK ARCHIVE | Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+        /* Importamos tipografías crudas y editoriales */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&display=swap');
         
+        :root {
+            --bg-color: #f4f4f0; /* Color papel viejo */
+            --text-color: #0f0f0f;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fcfcfc;
-            color: #111;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
         }
-        h1, h2, h3, .editorial-font {
-            font-family: 'Playfair Display', serif;
+
+        /* Títulos con fuente de periódico antiguo */
+        .font-serif { font-family: 'Newsreader', serif; }
+
+        /* EL SECRETO: La textura de grano fotográfico sobre toda la web */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-        .border-y-custom { border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+
+        /* Líneas duras estilo archivo */
+        .border-brutal { border: 1.5px solid var(--text-color); }
+        .border-b-brutal { border-bottom: 1.5px solid var(--text-color); }
+        .border-t-brutal { border-top: 1.5px solid var(--text-color); }
+        .border-r-brutal { border-right: 1.5px solid var(--text-color); }
+        
+        /* Imágenes sin bordes redondeados y en blanco y negro */
+        img { border-radius: 0 !important; filter: grayscale(100%) contrast(120%); transition: filter 0.3s ease; }
+        img:hover { filter: grayscale(0%) contrast(100%); }
     </style>
 </head>
-<body class="antialiased p-6 md:p-12 max-w-7xl mx-auto">
+<body class="antialiased min-h-screen flex flex-col">
 
-    <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 pb-6 border-b border-gray-200">
-        <div>
-            <h1 class="text-3xl md:text-5xl font-bold tracking-tight editorial-font mb-2">Studio Archive</h1>
-            <p class="text-sm text-gray-500 uppercase tracking-widest">Tatuaje Contemporáneo</p>
-        </div>
-        <nav class="mt-6 md:mt-0 flex gap-6 text-sm font-semibold uppercase tracking-wider">
-            <a href="#ofertas" class="hover:text-gray-500 transition">Ofertas Flash</a>
-            <a href="#archivo" class="hover:text-gray-500 transition">Portfolio</a>
-            <a href="#contacto" class="hover:text-gray-500 transition">Contacto</a>
+    <div class="grain-overlay"></div>
+
+    <header class="border-b-brutal flex justify-between items-center p-4 md:px-8 bg-[#f4f4f0] sticky top-0 z-50">
+        <div class="font-bold text-xl tracking-tighter uppercase">INK ARCHIVE</div>
+        <nav class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest">
+            <a href="#flash" class="hover:underline underline-offset-4">Flash</a>
+            <a href="#portfolio" class="hover:underline underline-offset-4">Portfolio</a>
+            <a href="#info" class="hover:underline underline-offset-4">Info</a>
         </nav>
+        <a href="#flash" class="bg-black text-[#f4f4f0] px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-gray-800">Reservar</a>
     </header>
 
-    <section class="mb-24">
-        <div class="flex items-center gap-4 mb-8">
-            <div class="h-px bg-black flex-grow"></div>
-            <h2 class="text-xs font-bold uppercase tracking-widest">Pieza Destacada</h2>
-            <div class="h-px bg-black flex-grow"></div>
-        </div>
+    <main class="flex-grow max-w-7xl mx-auto w-full border-l-brutal border-r-brutal">
         
-        <div class="grid md:grid-cols-2 gap-12 items-center bg-gray-50 p-6 md:p-12 rounded-sm border border-gray-100">
-            <div class="aspect-square bg-gray-200 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1598371839696-5e5bb00b059b?auto=format&fit=crop&q=80" alt="Pieza Estrella" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
-            </div>
-            <div>
-                <h3 class="text-4xl editorial-font font-bold mb-4">El Vuelo (Espalda Completa)</h3>
-                <p class="text-gray-600 mb-8 leading-relaxed">Diseño exclusivo disponible para espalda o pecho. Línea fina y sombreado suave. El precio incluye dos sesiones de trabajo. Solo se tatuará una vez.</p>
-                <div class="flex items-center gap-6">
-                    <span class="text-2xl font-bold">450€</span>
-                    <a href="TU_ENLACE_DE_STRIPE_AQUI" target="_blank" class="bg-black text-white px-8 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gray-800 transition">
-                        Reservar Diseño
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section class="border-b-brutal p-8 md:p-16 text-center bg-white">
+            <h1 class="font-serif text-6xl md:text-8xl font-bold tracking-tight mb-6">Tinta y Ruido.</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto font-medium">
+                Archivo visual y piezas disponibles. Estudio privado. Solo con cita previa.
+            </p>
+        </section>
 
-    <section id="ofertas" class="mb-24">
-        <h2 class="text-3xl editorial-font font-bold mb-12 border-b border-gray-200 pb-4">Flash Disponibles</h2>
-        
-        <div class="grid md:grid-cols-2 gap-16">
+        <section id="flash" class="grid grid-cols-1 md:grid-cols-2">
             
-            <article class="group cursor-pointer">
-                <div class="aspect-[4/3] bg-gray-200 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:scale-105 group-hover:grayscale-0 transition duration-700">
+            <article class="border-b-brutal md:border-r-brutal md:border-b-0 group flex flex-col h-full bg-[#f4f4f0]">
+                <div class="aspect-[4/5] border-b-brutal overflow-hidden bg-black p-4">
+                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80" alt="Flash 1" class="w-full h-full object-cover border-brutal">
                 </div>
-                <div class="flex justify-between items-start">
+                <div class="p-6 flex flex-col flex-grow justify-between">
                     <div>
-                        <span class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">10x15cm · Brazos/Piernas</span>
-                        <h3 class="text-2xl editorial-font font-bold mb-2">Rosa Botánica</h3>
-                        <p class="text-lg font-semibold">120€</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold uppercase tracking-widest border-brutal px-2 py-1 bg-black text-white">Disponible</span>
+                            <span class="text-sm font-bold">120€</span>
+                        </div>
+                        <h2 class="font-serif text-3xl font-bold mb-2">Rosa Botánica</h2>
+                        <p class="text-sm leading-relaxed mb-6">Diseño original. Tamaño aproximado 10x15cm. Ideal para brazos o piernas. El precio incluye la sesión completa.</p>
                     </div>
-                    <a href="TU_ENLACE_DE_STRIPE_AQUI" target="_blank" class="border border-black px-4 py-2 text-xs font-bold uppercase hover:bg-black hover:text-white transition">
-                        Comprar
+                    <a href="TU_ENLACE_STRIPE_AQUI" class="block w-full text-center border-brutal py-3 font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+                        Reclamar Diseño
                     </a>
                 </div>
             </article>
 
-            <article class="group cursor-pointer">
-                <div class="aspect-[4/3] bg-gray-200 mb-6 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:scale-105 group-hover:grayscale-0 transition duration-700">
+            <article class="group flex flex-col h-full bg-[#f4f4f0] border-b-brutal md:border-b-0">
+                <div class="aspect-[4/5] border-b-brutal overflow-hidden bg-black p-4">
+                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&q=80" alt="Flash 2" class="w-full h-full object-cover border-brutal">
                 </div>
-                <div class="flex justify-between items-start">
+                <div class="p-6 flex flex-col flex-grow justify-between">
                     <div>
-                        <span class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">20cm · Full Color</span>
-                        <h3 class="text-2xl editorial-font font-bold mb-2">Daga Tradicional</h3>
-                        <p class="text-lg font-semibold">180€</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold uppercase tracking-widest border-brutal px-2 py-1 bg-black text-white">Disponible</span>
+                            <span class="text-sm font-bold">180€</span>
+                        </div>
+                        <h2 class="font-serif text-3xl font-bold mb-2">Daga Clásica</h2>
+                        <p class="text-sm leading-relaxed mb-6">Pieza de estilo tradicional. Tamaño 20cm. Tinta negra con alto contraste.</p>
                     </div>
-                    <a href="TU_ENLACE_DE_STRIPE_AQUI" target="_blank" class="border border-black px-4 py-2 text-xs font-bold uppercase hover:bg-black hover:text-white transition">
-                        Comprar
+                    <a href="TU_ENLACE_STRIPE_AQUI" class="block w-full text-center border-brutal py-3 font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+                        Reclamar Diseño
                     </a>
                 </div>
             </article>
 
-        </div>
-    </section>
+        </section>
 
-    <section id="archivo" class="mb-24">
-        <h2 class="text-3xl editorial-font font-bold mb-8">Archivo de Trabajos</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="aspect-square bg-gray-200"><img src="https://images.unsplash.com/photo-1590246814883-58279140dc29?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition"></div>
-            <div class="aspect-square bg-gray-200"><img src="https://images.unsplash.com/photo-1600865809804-d7ae92484433?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition"></div>
-            <div class="aspect-square bg-gray-200"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition"></div>
-            <div class="aspect-square bg-gray-200"><img src="https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition"></div>
-        </div>
-    </section>
+        <section id="info" class="border-t-brutal bg-white">
+            <div class="p-4 border-b-brutal bg-black text-white">
+                <h2 class="font-bold uppercase tracking-widest text-sm">Condiciones de Reserva</h2>
+            </div>
+            <div class="flex flex-col">
+                <div class="grid grid-cols-3 p-4 border-b-brutal hover:bg-gray-100 transition-colors">
+                    <div class="font-bold">Depósito</div>
+                    <div class="col-span-2">50€ (Se descuenta del precio final. No reembolsable).</div>
+                </div>
+                <div class="grid grid-cols-3 p-4 border-b-brutal hover:bg-gray-100 transition-colors">
+                    <div class="font-bold">Diseños a medida</div>
+                    <div class="col-span-2">Manda tu idea por email para presupuesto.</div>
+                </div>
+                <div class="grid grid-cols-3 p-4 hover:bg-gray-100 transition-colors">
+                    <div class="font-bold">Ubicación</div>
+                    <div class="col-span-2">Málaga centro. La dirección exacta se envía tras la reserva.</div>
+                </div>
+            </div>
+        </section>
 
-    <footer id="contacto" class="border-t border-gray-200 pt-12 pb-24 flex flex-col md:flex-row justify-between items-center text-sm">
-        <div class="mb-4 md:mb-0">
-            <p class="font-bold uppercase tracking-widest">© 2026 Studio Archive</p>
-        </div>
-        <div class="flex gap-8 uppercase tracking-wider font-semibold">
-            <a href="#" class="hover:text-gray-500">Instagram</a>
-            <a href="#" class="hover:text-gray-500">Email</a>
+    </main>
+
+    <footer class="border-t-brutal bg-[#f4f4f0] p-8 text-center mt-auto">
+        <div class="font-serif text-2xl font-bold mb-4">INK ARCHIVE © 2026</div>
+        <div class="flex justify-center gap-6 text-xs font-bold uppercase tracking-widest">
+            <a href="#" class="hover:underline">Instagram</a>
+            <a href="#" class="hover:underline">Email</a>
         </div>
     </footer>
 
