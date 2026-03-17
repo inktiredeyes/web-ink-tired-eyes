@@ -3,143 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INK ARCHIVE | Studio</title>
+    <title>Grain Archive | Diseño Original</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Importamos tipografías crudas y editoriales */
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&display=swap');
+        /* Tipografías base */
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
         
+        body { font-family: 'Source Sans Pro', sans-serif; background-color: #f6f6f2; color: #111; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Paleta de colores de la plantilla */
         :root {
-            --bg-color: #f4f4f0; /* Color papel viejo */
-            --text-color: #0f0f0f;
+            --dark-banner-bg: #111;
+            --dark-block-bg: #1a1a1a;
+            --highlight-blue: #007aff;
+            --light-blue-bg: #eef2f5;
+            --main-bg: #f6f6f2;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Space Grotesk', sans-serif;
-            position: relative;
-        }
-
-        /* Títulos con fuente de periódico antiguo */
-        .font-serif { font-family: 'Newsreader', serif; }
-
-        /* EL SECRETO: La textura de grano fotográfico sobre toda la web */
-        .grain-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.06;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        /* Líneas duras estilo archivo */
-        .border-brutal { border: 1.5px solid var(--text-color); }
-        .border-b-brutal { border-bottom: 1.5px solid var(--text-color); }
-        .border-t-brutal { border-top: 1.5px solid var(--text-color); }
-        .border-r-brutal { border-right: 1.5px solid var(--text-color); }
-        
-        /* Imágenes sin bordes redondeados y en blanco y negro */
-        img { border-radius: 0 !important; filter: grayscale(100%) contrast(120%); transition: filter 0.3s ease; }
-        img:hover { filter: grayscale(0%) contrast(100%); }
+        /* Utilidades para los bordes duros y crudos de la plantilla */
+        .border-hard { border: 1px solid #111; }
+        .border-b-hard { border-bottom: 1px solid #111; }
+        .border-r-hard { border-right: 1px solid #111; }
+        .border-t-hard { border-top: 1px solid #111; }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen">
 
-    <div class="grain-overlay"></div>
-
-    <header class="border-b-brutal flex justify-between items-center p-4 md:px-8 bg-[#f4f4f0] sticky top-0 z-50">
-        <div class="font-bold text-xl tracking-tighter uppercase">INK ARCHIVE</div>
-        <nav class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest">
-            <a href="#flash" class="hover:underline underline-offset-4">Flash</a>
-            <a href="#portfolio" class="hover:underline underline-offset-4">Portfolio</a>
-            <a href="#info" class="hover:underline underline-offset-4">Info</a>
-        </nav>
-        <a href="#flash" class="bg-black text-[#f4f4f0] px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-gray-800">Reservar</a>
+    <header class="border-b-hard flex justify-between items-center p-4 md:px-8 bg-[#f6f6f2] sticky top-0 z-50">
+        <div class="font-serif text-3xl font-bold tracking-tighter">Grain Archive</div>
+        <div class="flex items-center gap-8">
+            <nav class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest">
+                <a href="#home" class="hover:underline underline-offset-4">Home</a>
+                <a href="#archive" class="hover:underline underline-offset-4">Archive</a>
+                <a href="#about" class="hover:underline underline-offset-4">About</a>
+            </nav>
+            <button class="w-6 h-6 border-hard rounded-full p-1 flex items-center justify-center">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 10C7.98528 10 10 7.98528 10 5.5C10 3.01472 7.98528 1 5.5 1C3.01472 1 1 3.01472 1 5.5C1 7.98528 3.01472 10 5.5 10Z" stroke="black" stroke-width="1.5"/><path d="M9 9L11 11" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+        </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto w-full border-l-brutal border-r-brutal">
+    <main class="flex-grow">
         
-        <section class="border-b-brutal p-8 md:p-16 text-center bg-white">
-            <h1 class="font-serif text-6xl md:text-8xl font-bold tracking-tight mb-6">Tinta y Ruido.</h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto font-medium">
-                Archivo visual y piezas disponibles. Estudio privado. Solo con cita previa.
-            </p>
-        </section>
-
-        <section id="flash" class="grid grid-cols-1 md:grid-cols-2">
-            
-            <article class="border-b-brutal md:border-r-brutal md:border-b-0 group flex flex-col h-full bg-[#f4f4f0]">
-                <div class="aspect-[4/5] border-b-brutal overflow-hidden bg-black p-4">
-                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80" alt="Flash 1" class="w-full h-full object-cover border-brutal">
+        <section class="border-b-hard" style="background-color: var(--dark-banner-bg);">
+            <div class="max-w-7xl mx-auto p-12 md:p-24 grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-white relative z-10">
+                    <span class="text-xs uppercase tracking-widest font-bold block mb-4">Film · August 21, 2028</span>
+                    <h1 class="font-serif text-6xl md:text-8xl font-bold tracking-tight leading-none mb-10">Listening to Films That Drift</h1>
+                    <p class="text-lg max-w-lg mb-10 font-medium">Artifact — False Memory, available now on major streaming platforms. Words, images, and signals from the edge.</p>
                 </div>
-                <div class="p-6 flex flex-col flex-grow justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-xs font-bold uppercase tracking-widest border-brutal px-2 py-1 bg-black text-white">Disponible</span>
-                            <span class="text-sm font-bold">120€</span>
-                        </div>
-                        <h2 class="font-serif text-3xl font-bold mb-2">Rosa Botánica</h2>
-                        <p class="text-sm leading-relaxed mb-6">Diseño original. Tamaño aproximado 10x15cm. Ideal para brazos o piernas. El precio incluye la sesión completa.</p>
-                    </div>
-                    <a href="TU_ENLACE_STRIPE_AQUI" class="block w-full text-center border-brutal py-3 font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
-                        Reclamar Diseño
-                    </a>
+                <div class="relative bg-zinc-800 aspect-[5/6] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1598371839696-5e5bb00b059b?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <div class="absolute top-4 left-4 border-hard p-2 text-white text-xs font-bold uppercase tracking-wider">GA</div>
+                    <div class="absolute top-4 right-4 text-white text-xs font-bold uppercase tracking-wider">21 / 08 / 28</div>
                 </div>
-            </article>
-
-            <article class="group flex flex-col h-full bg-[#f4f4f0] border-b-brutal md:border-b-0">
-                <div class="aspect-[4/5] border-b-brutal overflow-hidden bg-black p-4">
-                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&q=80" alt="Flash 2" class="w-full h-full object-cover border-brutal">
-                </div>
-                <div class="p-6 flex flex-col flex-grow justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-xs font-bold uppercase tracking-widest border-brutal px-2 py-1 bg-black text-white">Disponible</span>
-                            <span class="text-sm font-bold">180€</span>
-                        </div>
-                        <h2 class="font-serif text-3xl font-bold mb-2">Daga Clásica</h2>
-                        <p class="text-sm leading-relaxed mb-6">Pieza de estilo tradicional. Tamaño 20cm. Tinta negra con alto contraste.</p>
-                    </div>
-                    <a href="TU_ENLACE_STRIPE_AQUI" class="block w-full text-center border-brutal py-3 font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
-                        Reclamar Diseño
-                    </a>
-                </div>
-            </article>
-
-        </section>
-
-        <section id="info" class="border-t-brutal bg-white">
-            <div class="p-4 border-b-brutal bg-black text-white">
-                <h2 class="font-bold uppercase tracking-widest text-sm">Condiciones de Reserva</h2>
             </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto border-l-hard border-r-hard grid grid-cols-1 md:grid-cols-3">
+            
+            <article class="border-b-hard md:border-r-hard md:border-b-0 p-8 flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&q=80" alt="Music Article" class="w-full aspect-video object-cover mb-8">
+                    <h2 class="font-serif text-3xl font-bold mb-3">Drowning in Delay: The Revival of Fuzz Worship</h2>
+                    <p class="text-sm font-bold uppercase tracking-widest mb-4">Music · August 6, 2028</p>
+                </div>
+                <p class="text-sm">False Memory by Artifact. Circular play icon: Listen now.</p>
+            </article>
+
+            <article class="border-b-hard md:border-r-hard md:border-b-0 p-8 flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&q=80" alt="Film Article" class="w-full aspect-video object-cover mb-8 grayscale">
+                    <h2 class="font-serif text-3xl font-bold mb-3">Color, Repetition, and the Sound of Soft Things</h2>
+                    <p class="text-sm font-bold uppercase tracking-widest mb-4">Film · July 11, 2028</p>
+                </div>
+                <p class="text-sm">GrainArchive logo. Words, images, and signals from the edge.</p>
+            </article>
+
+            <article class="border-b-hard md:border-b-0 p-8 flex flex-col justify-between">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80" alt="Visual Article" class="w-full aspect-video object-cover mb-8 grayscale">
+                    <h2 class="font-serif text-3xl font-bold mb-3 leading-tight">Mirrors, Image Loops, and Feedback Logic of Visual Culture</h2>
+                    <p class="text-sm font-bold uppercase tracking-widest mb-4">Visual · June 24, 2028</p>
+                </div>
+                <p class="text-sm">Tune into the signal. Deep cuts on music, film, and culture.</p>
+            </article>
+
+        </section>
+
+        <section class="max-w-7xl mx-auto border-hard flex flex-col md:flex-row items-stretch" style="background-color: var(--dark-block-bg);">
+            <div class="max-w-4xl mx-auto flex-grow p-12 md:p-16 text-white relative">
+                <h2 class="text-4xl uppercase tracking-widest font-bold mb-10 text-white/40">Featured Album</h2>
+                <div class="relative z-10 flex gap-12 items-center">
+                    <div class="w-32 h-32 bg-gray-600 overflow-hidden rounded-full">
+                        <img src="https://images.unsplash.com/photo-1582152203058-fac1c5b4e853?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-5xl font-bold mb-4" style="color: var(--highlight-blue);">Artifact</h3>
+                        <p class="text-2xl font-bold" style="color: var(--highlight-blue);">False Memory</p>
+                        <div class="flex items-center gap-4 mt-8">
+                            <div class="w-10 h-10 border-hard rounded-full p-2 flex items-center justify-center bg-white text-black">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 8L5 3.5V12.5L13.5 8Z" fill="black"/></svg>
+                            </div>
+                            <span class="text-sm font-bold uppercase tracking-widest">Listen now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-32 bg-black border-l-hard p-12 md:p-4 flex items-center justify-center">
+                <div class="font-serif text-xl font-bold text-white/20">GA</div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto border-hard p-12 md:p-16" style="background-color: var(--main-bg);">
+            <h2 class="font-serif text-5xl font-bold mb-16">Cinema Selects</h2>
             <div class="flex flex-col">
-                <div class="grid grid-cols-3 p-4 border-b-brutal hover:bg-gray-100 transition-colors">
-                    <div class="font-bold">Depósito</div>
-                    <div class="col-span-2">50€ (Se descuenta del precio final. No reembolsable).</div>
+                <div class="grid grid-cols-4 p-4 border-b-hard bg-black text-white text-sm font-bold uppercase tracking-widest">
+                    <div>Film</div>
+                    <div>Year</div>
+                    <div>Mood</div>
+                    <div>Why watch</div>
                 </div>
-                <div class="grid grid-cols-3 p-4 border-b-brutal hover:bg-gray-100 transition-colors">
-                    <div class="font-bold">Diseños a medida</div>
-                    <div class="col-span-2">Manda tu idea por email para presupuesto.</div>
+                <div class="grid grid-cols-4 p-4 border-b-hard text-sm hover:bg-black/5 transition-colors">
+                    <div class="font-bold">Static Bloom</div>
+                    <div>2004</div>
+                    <div>Hazy, melancholic</div>
+                    <div class="col-span-1 text-xs text-gray-700">For the light leaks and long silences</div>
                 </div>
-                <div class="grid grid-cols-3 p-4 hover:bg-gray-100 transition-colors">
-                    <div class="font-bold">Ubicación</div>
-                    <div class="col-span-2">Málaga centro. La dirección exacta se envía tras la reserva.</div>
+                <div class="grid grid-cols-4 p-4 border-b-hard text-sm hover:bg-black/5 transition-colors">
+                    <div class="font-bold">Glass Rerun</div>
+                    <div>1998</div>
+                    <div>Dreamlike, looping</div>
+                    <div class="col-span-1 text-xs text-gray-700">Feels like déjà vu on VHS</div>
+                </div>
+                <div class="grid grid-cols-4 p-4 border-b-hard text-sm hover:bg-black/5 transition-colors">
+                    <div class="font-bold">Cold Century</div>
+                    <div>2024</div>
+                    <div>Stark, restrained</div>
+                    <div class="col-span-1 text-xs text-gray-700">A political breakup wrapped in fog</div>
+                </div>
+                <div class="grid grid-cols-4 p-4 text-sm hover:bg-black/5 transition-colors">
+                    <div class="font-bold">Wires in the Grass</div>
+                    <div>1988</div>
+                    <div>Pastoral, eerie</div>
+                    <div class="col-span-1 text-xs text-gray-700">Folk horror meets sci-fi</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-hard" style="background-color: var(--light-blue-bg);">
+            <div class="max-w-7xl mx-auto p-12 md:p-24 grid md:grid-cols-2 gap-16 items-center">
+                <div class="font-serif text-5xl md:text-6xl font-bold tracking-tight leading-none mb-10">Tune into the signal</div>
+                <div>
+                    <p class="text-lg max-w-lg mb-10 font-medium">No noise—just deep cuts on music, film, and culture.</p>
+                    <div class="flex items-center gap-4 border-hard p-4 bg-white max-w-lg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="black" stroke-width="2"/><path d="M22 6L12 13L2 6" stroke="black" stroke-width="2"/></svg>
+                        <input type="email" placeholder="mail@grainarchive.com" class="flex-grow text-sm font-medium focus:outline-none">
+                        <button class="bg-black text-white px-8 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gray-800 transition">Subscribe</button>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="border-t-brutal bg-[#f4f4f0] p-8 text-center mt-auto">
-        <div class="font-serif text-2xl font-bold mb-4">INK ARCHIVE © 2026</div>
-        <div class="flex justify-center gap-6 text-xs font-bold uppercase tracking-widest">
-            <a href="#" class="hover:underline">Instagram</a>
-            <a href="#" class="hover:underline">Email</a>
+    <footer class="border-t-hard bg-[#f6f6f2] p-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="flex items-center gap-2 justify-center md:justify-start">
+                <div class="font-serif text-xl font-bold">GrainArchive</div>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Links</h4>
+                <div class="flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider">
+                    <a href="#home" class="hover:underline underline-offset-4">Home</a>
+                    <a href="#archive" class="hover:underline underline-offset-4">Archive</a>
+                    <a href="#about" class="hover:underline underline-offset-4">About</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Connect</h4>
+                <div class="flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider">
+                    <a href="#" class="hover:underline underline-offset-4">Instagram</a>
+                    <a href="#" class="hover:underline underline-offset-4">Threads</a>
+                    <a href="#" class="hover:underline underline-offset-4">YouTube</a>
+                    <a href="mailto:mail@grainarchive.com" class="hover:underline underline-offset-4">Email</a>
+                </div>
+            </div>
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <p class="text-xs text-gray-600 mb-6">©2025 Grain Archive. Words, images, and signals from the edge.</p>
+                <div class="w-32 h-32 bg-gray-600 overflow-hidden rounded-full">
+                    <img src="https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                </div>
+                <div class="font-serif text-xl font-bold mt-6">Grain Archive logo</div>
+            </div>
         </div>
     </footer>
 
